@@ -1,0 +1,94 @@
+mongosh // to start
+
+use -database name- // to switch the database
+
+BSON Data: Binary JSON, readible for machine only
+JSON Data: text based, space inefficient, less data types
+
+Mongo db me data store BSON format me hota hai na k JSON forma me bhle he hmne use JSON me diya hota hai
+
+Mongo db me data store in the form of document me hota hai.
+
+INSERT in DB: 
+  show collections: shows all collections like showing all table in sql.
+  db.student.insertOne() : insert single document
+  db.student.insertMany() : insert multiple document
+  db.student.find() : 
+
+  yha pe student ka data document hai aur student collection hai.
+  mongodb sara document ko ek unique id de deta hai jo uska primary key hota hai.
+
+FIND in DB: 
+   db.collection.find() // returns all document of that collection
+
+   for specific queries: 
+    db.collection.find({key : value}); // ye sirf ek cursor hai jo actual document ki taraf point kr rha hai
+    db.collection.findOne({key : value}); // ye hamara actual document return kr k deta hai 
+agar hm kuch find kr rhe hai to jaruri nhi k ek he key value pair dale multiple v dal skte hai.
+
+Query operators in FIND: 
+  operator k same dollor $ sign use krte hai.
+  eg.  equal k liye $eq
+       greater than k liye $gt 
+
+       for student who scored greater than 75
+       db.student.find( {marks: {$gt:75} } )
+
+UPDATE in DB:
+    db.collection.updateOne(<filter>, <update>, <options>)
+    db.student.updateOne({name: "shreyans", {$set : {marks: 99}}});
+    
+    $addFields
+    $unset
+db.collection.replaceOne() // repalce the data of document
+db.collection.updateMany() // multiple update like jiska city delhi hai wo sab ka replae krna hai bombay se to ye use kr lnge
+
+Nesting: object k andr object
+
+DELETE in DB:
+ db.collection.deleteOne()
+ db.collection.deleteMany()
+
+db.dropDatabase()
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Mongoose: A library that creates a connectionn between MongoDB & Node.js JavaScript Runtime environment
+It is an ODM library (Object Data Modeling).
+
+Schema: Defines the shape of the document within that collection
+Schema matlab overall structure. mongo me collection k liye schema define krte hai aur har ek document ko schema ko follow krna pdega
+
+Models: model in mongoose is a class with which we construct class
+
+mongoose k andr jo model hoti hai wo collection hota hai aur jo object hoti hai wo document hoti hai
+
+Mongoose use Operation buffering: database se connection bne us se phle hme permission de deta hai k aap apna model bna lo 
+  
+FIND: model.find() // return a query object
+ mongoose queries are not promises but they have a .then()
+
+UPDATE:
+ model.updateOne();
+ model.updatMany();
+
+ model.findOneAndUpdate();
+ model.findByIdAndUpdate();
+
+DELETE: 
+ model.deleteOne(); 
+ model.deleteMany(); 
+ 
+ model.findByIdAndDelete();
+ model.findByOneAndDelete();
+
+
+
+
+       
+
+
+
+
+
+
+
